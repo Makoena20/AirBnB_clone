@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
-"""
-This module defines the Place class.
-"""
+"""Module defining the Place class."""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """
-    Place class that inherits from BaseModel.
-    """
+    """Place class inheriting from BaseModel."""
 
     city_id = ""
     user_id = ""
@@ -22,9 +18,3 @@ class Place(BaseModel):
     longitude = 0.0
     amenity_ids = []
 
-    def __init__(self, *args, **kwargs):
-        """
-        Constructor method.
-        """
-        super().__init__(*args, **kwargs)
-EOF
