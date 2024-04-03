@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
-"""Module defining the State class."""
+#!/usr/bin/python3
+"""State module"""
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """State class inheriting from BaseModel."""
-
+    """State class"""
     name = ""
+
