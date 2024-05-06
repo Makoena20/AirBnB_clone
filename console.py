@@ -9,8 +9,8 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
         return True
 
-    def do_EOF(self, arg):
-        """EOF command to exit the program"""
+    def do_EOF(self, line):
+        """Exits the program"""
         return True
 
     def emptyline(self):
@@ -18,3 +18,4 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
