@@ -1,13 +1,20 @@
-from models.base_model import BaseModel
+# models/user.py
+class User:
+    """User class"""
 
-class User(BaseModel):
-    """Defines the User class."""
+    def __init__(self):
+        """Initializes the user"""
 
-    def __init__(self, *args, **kwargs):
-        """Initialize a new User instance."""
-        super().__init__(*args, **kwargs)
-        self.email = ""
-        self.password = ""
-        self.first_name = ""
-        self.last_name = ""
+    def __str__(self):
+        """Return string representation of the user"""
+
+
+class TestUser(unittest.TestCase):
+    """Test cases for the user"""
+
+    def setUp(self):
+        """Set up the test"""
+
+    def tearDown(self):
+        """Clean up after the test"""
 

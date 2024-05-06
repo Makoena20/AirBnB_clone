@@ -1,19 +1,20 @@
-#!/usr/bin/python3
-"""Place module"""
-from models.base_model import BaseModel
-
-
-class Place(BaseModel):
+# models/place.py
+class Place:
     """Place class"""
-    city_id = ""
-    user_id = ""
-    name = ""
-    description = ""
-    number_rooms = 0
-    number_bathrooms = 0
-    max_guest = 0
-    price_by_night = 0
-    latitude = 0.0
-    longitude = 0.0
-    amenity_ids = []
+
+    def __init__(self):
+        """Initializes the place"""
+
+    def __str__(self):
+        """Return string representation of the place"""
+
+
+class TestPlace(unittest.TestCase):
+    """Test cases for the place"""
+
+    def setUp(self):
+        """Set up the test"""
+
+    def tearDown(self):
+        """Clean up after the test"""
 
