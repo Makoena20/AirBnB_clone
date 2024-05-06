@@ -1,40 +1,73 @@
 #!/usr/bin/python3
-
+"""
+Unit tests for console.py
+"""
 import unittest
 from unittest.mock import patch
 from io import StringIO
-from console import HBNBCommand
+import console
+
 
 class TestConsole(unittest.TestCase):
+    """
+    Test cases for the HBNBCommand class methods
+    """
 
-    def setUp(self):
-        self.console = HBNBCommand()
-
-    def tearDown(self):
-        pass
+    def test_help(self):
+        """
+        Test help command
+        """
+        with patch('sys.stdout', new=StringIO()) as f:
+            console.HBNBCommand().onecmd("help")
+            self.assertIn("Documented commands (type help <topic>):", f.getvalue())
 
     def test_quit(self):
+        """
+        Test quit command
+        """
+        with self.assertRaises(SystemExit):
+            console.HBNBCommand().onecmd("quit")
+
+    def test_create(self):
+        """
+        Test create command
+        """
         with patch('sys.stdout', new=StringIO()) as f:
-            self.console.onecmd("quit")
-            self.assertEqual(f.getvalue().strip(), "")
+            console.HBNBCommand().onecmd("create")
+            self.assertIn("** class name missing **", f.getvalue())
 
-    # Repeat the above pattern for other commands such as "EOF", "help", etc.
-
-    def test_create_base_model(self):
+    def test_show(self):
+        """
+        Test show command
+        """
         with patch('sys.stdout', new=StringIO()) as f:
-            self.console.onecmd("create BaseModel")
-            # Assert the output of create command
+            console.HBNBCommand().onecmd("show")
+            self.assertIn("** class name missing **", f.getvalue())
 
-    # Repeat the above pattern for other create commands such as "create User", "create State", etc.
-
-    def test_show_base_model(self):
+    def test_destroy(self):
+        """
+        Test destroy command
+        """
         with patch('sys.stdout', new=StringIO()) as f:
-            self.console.onecmd("show BaseModel")
-            # Assert the output of show command
+            console.HBNBCommand().onecmd("destroy")
+            self.assertIn("** class name missing **", f.getvalue())
 
-    # Repeat the above pattern for other show commands such as "show User", "show State", etc.
+    def test_all(self):
+        """
+        Test all command
+        """
+        with patch('sys.stdout', new=StringIO()) as f:
+            console.HBNBCommand().onecmd("all")
+            self.assertIn("*** No instances found ***", f.getvalue())
 
-    # Write tests for other functionalities like destroy, all, update, etc.
+    def test_update(self):
+        """
+        Test update command
+        """
+        with patch('sys.stdout', new=StringIO()) as f:
+            console.HBNBCommand().onecmd("update")
+            self.assertIn("** class name missing **", f.getvalue())
+
 
 if __name__ == '__main__':
     unittest.main()
