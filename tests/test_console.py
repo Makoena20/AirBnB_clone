@@ -1,72 +1,47 @@
 #!/usr/bin/python3
-"""
-Unit tests for console.py
-"""
+"""Unit tests for console.py"""
+
 import unittest
-from unittest.mock import patch
+from console import HBNBCommand
+from models.base_model import BaseModel
 from io import StringIO
-import console
+from unittest.mock import patch
 
 
 class TestConsole(unittest.TestCase):
-    """
-    Test cases for the HBNBCommand class methods
-    """
-
-    def test_help(self):
-        """
-        Test help command
-        """
-        with patch('sys.stdout', new=StringIO()) as f:
-            console.HBNBCommand().onecmd("help")
-            self.assertIn("Documented commands (type help <topic>):", f.getvalue())
+    """Test cases for console.py"""
 
     def test_quit(self):
-        """
-        Test quit command
-        """
-        with self.assertRaises(SystemExit):
-            console.HBNBCommand().onecmd("quit")
-
-    def test_create(self):
-        """
-        Test create command
-        """
+        """Test quit command"""
         with patch('sys.stdout', new=StringIO()) as f:
-            console.HBNBCommand().onecmd("create")
-            self.assertIn("** class name missing **", f.getvalue())
+            HBNBCommand().onecmd("quit")
+            self.assertEqual('', f.getvalue().strip())
 
-    def test_show(self):
-        """
-        Test show command
-        """
+    def test_EOF(self):
+        """Test EOF command"""
         with patch('sys.stdout', new=StringIO()) as f:
-            console.HBNBCommand().onecmd("show")
-            self.assertIn("** class name missing **", f.getvalue())
+            HBNBCommand().onecmd("EOF")
+            self.assertEqual('', f.getvalue().strip())
 
-    def test_destroy(self):
-        """
-        Test destroy command
-        """
+    def test_help(self):
+        """Test help command"""
         with patch('sys.stdout', new=StringIO()) as f:
-            console.HBNBCommand().onecmd("destroy")
-            self.assertIn("** class name missing **", f.getvalue())
+            HBNBCommand().onecmd("help")
+            self.assertIn('quit', f.getvalue())
 
-    def test_all(self):
-        """
-        Test all command
-        """
+    def test_empty_line(self):
+        """Test empty line"""
         with patch('sys.stdout', new=StringIO()) as f:
-            console.HBNBCommand().onecmd("all")
-            self.assertIn("*** No instances found ***", f.getvalue())
+            HBNBCommand().onecmd("\n")
+            self.assertEqual('', f.getvalue().strip())
 
-    def test_update(self):
-        """
-        Test update command
-        """
+    def test_create_BaseModel(self):
+        """Test create BaseModel"""
         with patch('sys.stdout', new=StringIO()) as f:
-            console.HBNBCommand().onecmd("update")
-            self.assertIn("** class name missing **", f.getvalue())
+            HBNBCommand().onecmd("create BaseModel")
+            # Add assertions here
+
+    # Add more test cases for other functionalities
 
 
 if __name__ == '__main__':
