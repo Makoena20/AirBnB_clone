@@ -101,5 +101,20 @@ class TestConsole(unittest.TestCase):
             output = f.getvalue().strip()
             self.assertEqual("", output)
 
+    def test_all_base_model(self):
+        """
+        Test BaseModel.all() method is present
+        """
+        self.assertTrue(hasattr(HBNBCommand, "do_all"))
+
+    def test_count_base_model(self):
+        """
+        Test BaseModel.count() method is present
+        """
+        self.assertTrue(hasattr(HBNBCommand, "do_count"))
+
+    # More tests for other classes and methods can be added similarly
+
 if __name__ == '__main__':
     unittest.main()
+
