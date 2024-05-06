@@ -1,4 +1,4 @@
-# models/user.py
+#!/usr/bin/python3
 class User:
     """User class"""
 

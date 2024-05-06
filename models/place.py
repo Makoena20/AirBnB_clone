@@ -1,4 +1,4 @@
-# models/place.py
+#!/usr/bin/python3
 class Place:
     """Place class"""
 
